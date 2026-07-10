@@ -1,4 +1,4 @@
-# ⌨️ Predictive Text Input System Using N-gram Markov Models
+# ⌨️ Predictive Text Input System Using N-gram Based Markov Models
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Tkinter](https://img.shields.io/badge/Tkinter-blue?style=for-the-badge) ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## 📋 Table of Contents
@@ -7,6 +7,8 @@
 - [Key Innovation](#🔬-key-innovation)
 - [Performance Highlights](#📊-performance-highlights)
 - [Architecture](#🏗️-architecture)
+- [Methodology & Technical Details](#⚙️-methodology--technical-details)
+- [Project Structure](#📂-project-structure)
 - [Tech Stack](#🧱-tech-stack)
 - [Quick Start](#💻-quick-start)
 
@@ -40,7 +42,37 @@ An AI-powered text prediction engine trained on Project Gutenberg literary works
 ---
 
 ## 🏗️ Architecture
-```\n[Core Architectural Components & Datastore Framework]\n```
+```mermaid
+graph TD
+    Text[Typed Character] -->|Segment context| Context[Last 3 words]
+    Context -->|Query probability| Ngram[N-gram probability maps]
+    Ngram -->|Smoothing fallback| Backoff[Witten-Bell smoothing calculation]
+    Backoff -->|Display suggestions| UI[Interactive Tkinter Dashboard]
+```
+
+---
+
+## ⚙️ Methodology & Technical Details
+### N-gram Probability Calculation
+We construct frequency maps for bigrams, trigrams, and 4-grams over our text corpus. Maximum Likelihood Estimation (MLE) computes standard transitions:
+$$P_{MLE}(w_n | w_{n-1}) = \frac{C(w_{n-1}, w_n)}{C(w_{n-1})}$$
+where \(C(w_{n-1}, w_n)\) is the frequency of word sequence \(w_{n-1} w_n\).
+
+### Witten-Bell Smoothing & Backoff
+To predict words for unseen sequences, the program implements Witten-Bell backoff. It models the probability of seeing a new word following context \(h\) based on the count of unique words \(T(h)\) observed in that context:
+$$P_{WB}(w_n | h) = \frac{C(h, w_n)}{C(h) + T(h)} + \frac{T(h)}{C(h) + T(h)} P_{WB}(w_n | h')$$
+where \(h'\) is the shortened backoff context (e.g. falling back from trigram to bigram). This ensures smooth predictions even with rare typing strings.
+
+---
+
+## 📂 Project Structure
+```
+predictive_text/
+├── simple_live_demo.py     # Main Tkinter typing application interface
+├── pts.py                  # Core Markov model probability generator
+├── requirements.txt        # Package definitions
+└── corpus/                 # Tom Sawyer & WhatsApp raw text inputs
+```
 
 ---
 
@@ -59,11 +91,6 @@ git clone https://github.com/Raghuram-sekar/Predictive-Text-Input-System.git
 cd Predictive-Text-Input-System
 
 # Execute local setup commands:
-# MLE Probability Formula:
-# P_MLE(w_n | h) = count(h, w_n) / count(h)
-# Laplace Smoothing:
-# P_Laplace(w_n | h) = (count(h, w_n) + 1) / (count(h) + V)
-
 pip install -r requirements.txt
 python simple_live_demo.py
 ```
