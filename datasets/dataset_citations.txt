@@ -1,0 +1,40 @@
+DATASET CITATIONS FOR PREDICTIVE TEXT INPUT SYSTEM
+============================================================
+
+This project uses the following reputable datasets:
+
+Project Gutenberg
+URL: https://www.gutenberg.org/
+Description: Free eBooks of classic literature
+Citation: Project Gutenberg. (2021). Free eBooks. https://www.gutenberg.org/
+----------------------------------------
+
+Stanford Large Movie Review Dataset
+URL: https://ai.stanford.edu/~amaas/data/sentiment/
+Description: 50,000 movie reviews for sentiment analysis
+Citation: Maas, A. L., Daly, R. E., Pham, P. T., Huang, D., Ng, A. Y., & Potts, C. (2011). Learning word vectors for sentiment analysis. In Proceedings of the 49th annual meeting of the association for computational linguistics: Human language technologies-volume 1 (pp. 142-150).
+----------------------------------------
+
+Reuters-21578
+URL: https://kdd.ics.uci.edu/databases/reuters21578/reuters21578.html
+Description: Collection of Reuters newswire articles
+Citation: Lewis, D. D. (1997). Reuters-21578 text categorization collection. AT&T Labs Research.
+----------------------------------------
+
+Brown Corpus
+URL: https://www1.essex.ac.uk/linguistics/external/clmt/w3c/corpus_ling/content/corpora/list/private/brown/brown.html
+Description: Balanced corpus of American English
+Citation: Francis, W. N., & Kucera, H. (1979). Brown corpus manual. Brown University.
+----------------------------------------
+
+Wikipedia Articles
+URL: https://dumps.wikimedia.org/
+Description: Encyclopedia articles from Wikipedia
+Citation: Wikimedia Foundation. (2024). Wikipedia: The Free Encyclopedia. https://en.wikipedia.org/
+----------------------------------------
+
+ADDITIONAL NOTES:
+- All datasets are publicly available and free to use for research
+- NLTK corpora are academic-standard datasets
+- Project Gutenberg texts are in the public domain
+- Stanford datasets are widely used in academic research
